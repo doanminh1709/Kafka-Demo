@@ -1,11 +1,19 @@
 package com.learnmicroservice.accountservice.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class MessageDTO {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "to_email")
     private String to;
     private String toName;
     private String subject;
     private String content;
-
+    private boolean status;
     public MessageDTO() {
     }
 
@@ -14,6 +22,23 @@ public class MessageDTO {
         this.toName = toName;
         this.subject = subject;
         this.content = content;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public String getTo() {
